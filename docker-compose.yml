@@ -10,6 +10,27 @@ services:
       POSTGRES_DB: spatial_data_db
     volumes:
       - postgres_data:/var/lib/postgresql/data
+    networks:
+      - mynetwork
+    healthcheck:
+      test: "exit 0"
+
+  alembic:
+    build:  
+      context: ./
+      dockerfile: ./etl_app/Dockerfile
+    environment:
+      DATABASE_URL: postgresql://username:password@database:5432/spatial_data_db
+    command: ["bash", "-c", "alembic upgrade head && python app.py"]
+    depends_on:
+      database:
+        condition: service_healthy
+    networks:
+      - mynetwork
 
 volumes:
   postgres_data:
+
+networks:
+  mynetwork:
+    driver: bridge

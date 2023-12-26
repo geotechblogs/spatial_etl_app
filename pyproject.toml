@@ -12,6 +12,7 @@ geoalchemy2 = "^0.14.3"
 geopandas = "^0.14.1"
 psycopg2 = "^2.9.9"
 sqlalchemy = "^2.0.23"
+fiona = "^1.9.5"
 
 
 [build-system]
