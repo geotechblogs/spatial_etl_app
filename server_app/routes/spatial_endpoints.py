@@ -25,7 +25,7 @@ def get_locations() -> dict:
 def get_locations_by_orgid(
     orgid: int = Query(ge=1, description="orgid for locations to search.")
 ) -> dict:
-    response = read_locations_by_orgid(orgid=1)
+    response = read_locations_by_orgid(orgid=orgid)
     return JSONResponse(
         content=response["content"], status_code=response["status_code"]
     )
