@@ -1,0 +1,49 @@
+version: 2.1
+
+workspace: &workspace-dir /tmp/workspace
+
+
+jobs:
+  test:
+    working_directory: *workspace-dir
+    docker:
+      - image: cimg/python:3.10
+        user: root
+        environment:
+          DATABASE_URL: postgresql://username:password@localhost:5432/spatial_data_db
+      - image: postgis/postgis:13-3.1
+        environment:
+          POSTGRES_USER: username
+          POSTGRES_PASSWORD: password
+          POSTGRES_DB: spatial_data_db
+          POSTGRES_HOST: localhost
+    steps:
+      - attach_workspace:
+          at: *workspace-dir
+      - checkout
+      - run:
+          name: Install GDAL
+          command: |
+            apt update -y
+            apt-get install libmysqlclient-dev
+            apt-get install libpq-dev gdal-bin libgdal-dev -y
+      - run:
+          name: "Install Dependencies"
+          command: |
+            poetry install --no-ansi
+      - run:
+          name: Creating database structure
+          command: |
+            cd etl_app
+            poetry run alembic upgrade head
+            poetry run python app.py
+      - run:
+          name: run tests
+          command: |
+            cd server_app
+            poetry run pytest .
+
+workflows:
+  build-and-test:
+    jobs:
+      - test
