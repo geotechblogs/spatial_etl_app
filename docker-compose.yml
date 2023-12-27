@@ -28,6 +28,22 @@ services:
     networks:
       - mynetwork
 
+  fastapi:
+      build:
+        context: ./
+        dockerfile: ./server_app/Dockerfile
+      environment:
+        DATABASE_PLANET_URL: postgresql://username:password@database:5432/spatial_data_db
+      depends_on:
+        database:
+          condition: service_healthy
+      ports:
+        - 3200:8000
+      volumes:
+        - .:/usr/src/app/geo_app
+      networks:
+        - mynetwork
+
 volumes:
   postgres_data:
 
