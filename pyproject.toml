@@ -4,6 +4,9 @@ version = "0.1.0"
 description = ""
 authors = ["geotechblogs <ahernandez021985@gmail.com>"]
 readme = "README.md"
+packages = [
+    { include = "spatial_etl_app" }
+]
 
 [tool.poetry.dependencies]
 python = "^3.10"
