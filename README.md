@@ -4,8 +4,8 @@ This repository contains the source code for a complete, self-served geospatial 
 
 This project is the result of the blog post series:
 
-Part 1: The Database and ETL
-Part 2: The API and CI/CD
+- [Part 1: The Database and ETL](https://andher1802.github.io/personal-page/blog/creating_geo_fast_api_app_part_1/)
+- [Part 2: The API and CI/CD](https://andher1802.github.io/personal-page/blog/creating_geo_fast_api_app_part_2/)
 
 ### 🏛️ Application Architecture
 This diagram illustrates the complete application architecture, from data ingestion to CI/CD.
