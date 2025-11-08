@@ -153,4 +153,4 @@ Alternatively, the tests are run automatically by the CircleCI pipeline on every
 └── README.md              # You are here!
 ```
 License
-This project is licensed under the MIT License. See the LICENSE file for details.
+This project is licensed under the MIT License.
