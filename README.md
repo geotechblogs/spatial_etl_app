@@ -134,6 +134,11 @@ Alternatively, the tests are run automatically by the CircleCI pipeline on every
 ├── etl_service/           # ETL service, data, and Dockerfile
 │   ├── app.py             # Main ETL script
 │   ├── data/              # Raw data files
+│   ├── models/            # SQLAlchemy models
+│   ├── versions/          # SQLAlchemy models
+│   ├── alembic/           # Alembic migration files
+│   ├── alembic.ini        # Alembic config
+│   ├── env.py             # Env for alembic
 │   └── Dockerfile
 ├── server_app/            # FastAPI server application
 │   ├── config/            # Database configuration (database.py)
@@ -141,12 +146,10 @@ Alternatively, the tests are run automatically by the CircleCI pipeline on every
 │   ├── routes/            # API routes (spatial_endpoints.py)
 │   ├── services/          # Business logic (spatial_locations.py)
 │   ├── tests/             # Pytest tests
-│   ├── alembic/           # Alembic migration files
-│   ├── alembic.ini        # Alembic config
 │   ├── main.py            # FastAPI app entrypoint
 │   ├── Dockerfile
-│   └── pyproject.toml     # Poetry dependencies
 ├── docker-compose.yml     # Orchestrates all services
+├── project.toml           # Poetry dependencies
 └── README.md              # You are here!
 ```
 License
